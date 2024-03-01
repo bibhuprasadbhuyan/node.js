@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 connectDb();
 const app = expres();
 app.use(expres.json());
+app.use("/api/users", require("./Routes/userRoutes"));
 app.use("/api/contacts", require("./Routes/contactRoutes"));
 app.use(errorHandler);
 

@@ -18,6 +18,7 @@ const errorHandler = (err, req, res, next) => {
         message: err.message,
         stackTrace: err.stack,
       });
+      break;
 
     case constants.UNAUTORIZED:
       res.json({
@@ -25,6 +26,7 @@ const errorHandler = (err, req, res, next) => {
         message: err.message,
         stackTrace: err.stack,
       });
+      break;
 
     case constants.FORBIDDEN:
       res.json({
@@ -32,9 +34,20 @@ const errorHandler = (err, req, res, next) => {
         message: err.message,
         stackTrace: err.stack,
       });
+      break;
+    case constants.SERVER_ERROR:
+      res.json({
+        title: "Internal Server Error",
+        message: err.message,
+        stackTrace: err.stack,
+      });
+      break;
 
-    default:
-      console.log("No Error");
+    default:res.json({
+      title: `Internal Server Error fro stausCode ${statusCode}`,
+      message: err.message,
+      stackTrace: err.stack,
+    });
       break;
   }
 };
