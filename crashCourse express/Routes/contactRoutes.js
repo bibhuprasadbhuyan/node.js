@@ -6,8 +6,10 @@ const {
   updateContact,
   deleteContact,
 } = require("../controllers/contactControllers");
+const validateToken = require("../middlewire/authTokenHandler");
 const router = express.Router();
 // application.get("/detail",middleware,controller)
+router.use(validateToken)
 router.route("/").get(getContacts).post(createContact);
 router
   .route("/:id")
