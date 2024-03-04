@@ -57,4 +57,6 @@ const currentUser = asyncHandler(async (req, res) => {
   res.json(req.user);
 });
 
+console.log('this is a test');
+
 module.exports = { registerUser, loginUser, currentUser };
